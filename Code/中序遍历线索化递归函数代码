@@ -1,0 +1,25 @@
+BiThrTree pre;//全局变量，始终指向刚刚访问过的结点
+//中序遍历进行中序线索化
+void InTreeding(BiThrTree p)
+{
+  if(p)
+  {
+    InThreading(p->lchild);//递归左子树
+    
+    #region 加粗
+    if(!p->lchild)//没有左孩子
+    {
+      p->LTag=Thread//前驱线索;
+      p->lchild=pre;//左孩子指针指向前驱
+    }
+    if(!pre->rchild)//前驱没有右孩子
+    {
+      pre->RTag=Thread;//后继线索
+      pre->rchild=p;//前驱右孩子指针指向后继（当前节点p)
+    }
+    pre=p;//保持pre指向p的前驱；
+    #endregion 
+    
+    InThreading(p->rchild);//递归右子树线索化
+}
+//除了加粗代码，其他代码与中序遍历基本一致
