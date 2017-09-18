@@ -1,0 +1,19 @@
+//T指向头结点，头结点左链lchild指向根结点，头结点右链rchild指向中序遍历的最后一个节点。中序遍历二叉线索链表表示的二叉树T
+Status InOrderTraverse_Thr(BiThrTree T)
+{
+  BiThrTree p;
+  p=T->lchild;//p指向根结点
+  while (p!=T)//空树或遍历结束时，p==T
+  {
+    while(p->LTag==Link)//当LTag==0时循环到中序序列第一个结点
+      p=p->lchild;
+      printf("%c",p->data);//显示结点数据，可以更改为其他对结点操作
+      while(p->RTag==Thread&&p->rchild!=T)
+      {
+        p=p->rchild;
+        printf("%c",p->data);
+      }
+      p=p->child;//p进至其右子树根
+  }
+  return OK;
+}
